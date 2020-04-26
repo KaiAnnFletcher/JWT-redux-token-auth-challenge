@@ -1,0 +1,29 @@
+{
+  "name": "elearning-forum",
+  "version": "1.0.0",
+  "description": "Driving school course curriculum",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "lint": "eslint --quiet .",
+    "fix": "eslint --fix .",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build",
+    "start:dev-server": "nodemon --ignore 'client/*' --exec babel-node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaiAnnFletcher/Elearning-forum.git"
+  },
+  "author": "Kai-Ann Fletcher",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KaiAnnFletcher/Elearning-forum/issues"
+  },
+  "homepage": "https://github.com/KaiAnnFletcher/Elearning-forum#readme"
+}
