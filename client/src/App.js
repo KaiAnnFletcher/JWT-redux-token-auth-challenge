@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 //import Home from "./pages/Home";
-//import Login from "./pages/Login";
-//import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import Wrapper from "./components/Wrapper";
 //import Logout from "./pages/Logout";
 //import logo from './logo.svg';
@@ -17,11 +17,10 @@ function App() {
     <Wrapper>
      <Navbar />
      <Footer />
-    {/* <Route exact path="/" component={Home} />
+    {/* <Route exact path="/" component={Home} /> */}
     <Route exact path="/login" component={Login} />
-    <Route exact path="/logout" component={Logout} />
+    {/* <Route exact path="/logout" component={Logout} /> */}
     <Route exact path="/signup" component={Signup} />
-    <Route exact path="/logout" component={Logout} /> */}
     </Wrapper>
     
     </div>
