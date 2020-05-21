@@ -1,41 +1,165 @@
 import React, { Component } from 'react';
 import { Col, Row, Container } from "../components/Grid";
-import Signup from "../components/Signup"
+//import Signup from "../components/Signup";
+import "./Signup.css";
+import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { registerUser } from "../actions/authAction";
+import classnames from "classnames";
+//import API from "../utils/API";
 
 class Sign extends Component {
-    state = {
-        regfirstname:"",
-        reglastname:"",
-        regusername:"",
-        regpassword:"",
-        registered: 0,
-        regmessage:""
-    }
+  constructor() {
+    super();
+    this.state = {
+        firstname:"",
+        lastname:"",
+        username:"",
+        password:"",
+        errors: {}
+    };
+  }
 
 //logic goes here
+componentDidMount() {
+  //If logged in and user navigates to Register, should redirect them to dashboard/homepage
+  if(this.props.auth.isAuthenticated) {
+    this.props.history.push("/home");
+  }
+}
+
+componentWillReceiveProps(nextProps){
+  if(nextProps.errors) {
+    this.setState({
+      errors: nextProps.errors
+    });
+  }
+}
+
+onChange = e => {
+  this.setState({ [e.target.id]: e.target.value });
+};
+
+onSubmit = e => {
+  e.preventDefault();
+
+const newUser = {
+  firstname: this.state.firstname,
+  lastname: this.state.lastname,
+  username: this.state.username,
+  password: this.state.password
+};
+this.props.registerUser(newUser, this.props.history);
+};
 
 render() {
+  const { errors } = this.state
     return (
 
       <Container>
    
         <Row>
             <Col size="lg-4 sm-12">
-            
-              <Signup
-                handleRegisterSubmit={this.handleRegisterSubmit}
-                handleRegisterChange={this.handleInputChange}
+
+            <div className="login styleLoginWrap">
+           <div className="login-container styleLoginSubWrap">
+
+    <form className="register styleRegister" noValidate onSubmit={this.onSubmit}>
+
+            <div className="form-group">
+                <label htmlFor="title"><h4>SIGNUP</h4></label>
+                <input
+                onChange={this.onChange}
+                id="firstname"
+                type="text"
+                placeholder="enter firstname"
+                value={this.state.firstname}
+                error={errors.firstname}
+                required
+                className={classnames("", {
+                  invalid: errors.firstname
+                })}
+                />
+
+                <input
+                onChange={this.onChange}
+                id="lastname"
+                type="text"
+                placeholder="enter lastname"
+                value={this.state.lastname}
+                error={errors.lastname}
+                required
+                className={classnames("", {
+                  invalid: errors.lastname
+                })}
+                />
+
+                <input
+                onChange={this.onChange}
+                id="username"
+                type="text"
+                placeholder="choose a username"
+                value={this.state.username}
+                error={errors.username}
+                required
+                className={classnames("", {
+                  invalid: errors.username
+                })}
+                />
+
+                <input
+                onChange={this.onChange}
+                id="password"
+                type="password"
+                placeholder="choose a password"
+                value={this.state.password}
+                error={errors.password}
+                required
+                className={classnames("", {
+                invalid: errors.password || errors.passwordnotfound
+                })}
+                />
+
+                <button
+                className="btn searchBtn"
+                type="submit"
+                onClick={this.onChange}>
+                Submit
+                </button>
+            </div>
+    </form>
+
+    </div>
+    </div>
+              {/* <Signup
+                onChange={this.onChange}
                 firstname={this.state.regfirstname}
                 lastname={this.state.reglastname}
                 username={this.state.regusername}
                 password={this.state.regpassword}
-                message={this.state.regmessage}
-                status={this.state.registered}
-                />
+                error={errors.regusername}
+                /> */}
             </Col>
         </Row>
     </Container>
     )
 }
 }
-export default Sign;
+
+Sign.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+
+export default connect(
+  mapStateToProps,
+  { registerUser }
+)(withRouter(Sign))

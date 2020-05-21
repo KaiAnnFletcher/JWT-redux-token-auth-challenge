@@ -1,73 +1,65 @@
-import React from "react";
-import "./style.css";
+// import React from "react";
+// import "./style.css";
 
-function Signup(props) {
-return (
 
-    <div className="register styleRegisterWrap">
-        <div className="resgister-container styleRegisterSubWrap">
+// function Signup(props) {
+// return (
 
-        {props.status===1 ?
-                    <div className="styleUserExists">
-                        {props.message}
-                    </div>
-                    :
-                    <div className="styleRegisterMsg">
-                    {props.message}
-                    </div>}
+//     <div className="login styleLoginWrap">
+//     <div className="login-container styleLoginSubWrap">
 
-    <form className="register styleRegister">
+//     <form className="register styleRegister" noValidate onSubmit={props.onSubmit}>
 
-            <div className="form-group">
-                <label htmlFor="title"><h4>SIGNUP</h4></label>
-                <input
-                onChange={props.handleRegisterChange}
-                name="regfirstname"
-                type="text"
-                placeholder="enter firstname"
-                value={props.firstname}
-                required
-                />
+//             <div className="form-group">
+//                 <label htmlFor="title"><h4>SIGNUP</h4></label>
+//                 <input
+//                 onChange={props.onChange}
+//                 name="regfirstname"
+//                 type="text"
+//                 placeholder="enter firstname"
+//                 value={props.regfirstname}
+//                 required
+//                 />
 
-                <input
-                onChange={props.handleRegisterChange}
-                name="reglastname"
-                type="text"
-                placeholder="enter lastname"
-                value={props.lastname}
-                required
-                />
+//                 <input
+//                 onChange={props.onChange}
+//                 name="reglastname"
+//                 type="text"
+//                 placeholder="enter lastname"
+//                 value={props.reglastname}
+//                 required
+//                 />
 
-                <input
-                onChange={props.handleRegisterChange}
-                name="regusername"
-                type="text"
-                placeholder="choose a username"
-                value={props.username}
-                required
-                />
+//                 <input
+//                 onChange={props.onChange}
+//                 name="regusername"
+//                 type="text"
+//                 placeholder="choose a username"
+//                 value={props.regusername}
+//                 required
+//                 />
 
-                <input
-                onChange={props.handleRegisterChange}
-                name="respassword"
-                type="password"
-                placeholder="choose a password"
-                value={props.password}
-                requried
-                />
+//                 <input
+//                 onChange={props.onChange}
+//                 name="regpassword"
+//                 type="password"
+//                 placeholder="choose a password"
+//                 value={props.regpassword}
+//                 required
+//                 />
 
-                <button
-                className="btn searchBtn"
-                type="submit"
-                onCLick={props.handleRegisterSubmit}>
-                Submit
-                </button>
-            </div>
-    </form>
+//                 <button
+//                 className="btn searchBtn"
+//                 type="submit"
+//                 onClick={props.onChange}>
+//                 Submit
+//                 </button>
+//             </div>
+//     </form>
 
-        </div>
-    </div>
-)
-}
+//     </div>
+//     </div>
+// )
+// }
 
-export default Signup
+// export default Signup
