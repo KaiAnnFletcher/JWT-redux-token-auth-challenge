@@ -9,15 +9,16 @@ import "./Login.css"
 //import API from "../utils/API";
 
 class Log extends Component {
-
-state = {
-    logfirstname:"",
-    loglastname:"",
-    logusername:"",
-    logpassword: "",
+  constructor() {
+    super()
+this.state = {
+    firstname:"",
+    lastname:"",
+    username:"",
+    password: "",
     errors: {}
 };
-
+}
 //Place logic here
 componentDidMount() {
   //If logged in and user navigates to LOgin page, should redirect them to dashboard/home page
@@ -45,10 +46,10 @@ onSubmit = e => {
   e.preventDefault();
 
   const userData = {
-    logfirstname: this.state.logfirstname,
-    loglastname: this.state.loglastname,
-    logusername: this.state.logusername,
-    logpassword: this.state.logpassword
+    firstname: this.state.firstname,
+    lastname: this.state.lastname,
+    username: this.state.username,
+    password: this.state.password
   };
 
   this.props.loginUser(userData);
@@ -62,65 +63,65 @@ render() {
     <Row>
     <Col size="lg-4 sm-12">
 
-    <div classname="login styleLoginWrap">
+    <div className="login styleLoginWrap">
     <div className="login-container styleLoginSubWrap">
 
     
-    <form className="login styleLogin" action="/login" method="post" noValidate onSubmit={this.onSubmit}>
+    <form className="login styleLogin" action="/login" noValidate onSubmit={this.onSubmit}>
 
         <div className="form-group">
             <label htmlFor="title"><h4>LOGIN</h4></label>
             <input
                 onChange={this.onChange}
-                firstname="logfirstname"
+                id="firstname"
                 type="text"
                 placeholder="First name"
-                value={this.state.logfirstname}
+                value={this.state.firstname}
                 required
                 className={classnames("", {
-                  invalid: errors.logfirstname || errors.logfirstnamenotfound
+                  invalid: errors.firstname || errors.firstnamenotfound
                 })}
             />
 
             <input
                 onChange={this.onChange}
-                lastname="loglastname"
+                id="lastname"
                 type="text"
                 placeholder="Last name"
-                value={this.state.loglastname}
+                value={this.state.lastname}
                 required
                 className={classnames("", {
-                  invalid: errors.loglastname || errors.loglastnamenotfound
+                  invalid: errors.lastname || errors.lastnamenotfound
                 })}
             />
 
             <input
                 onChange={this.onChange}
-                username="loglusername"
+                id="username"
                 type="text"
                 placeholder="Username"
-                value={this.state.logusername}
+                value={this.state.username}
                 required
                 className={classnames("", {
-                  invalid: errors.logusername || errors.logusernamenotfound
+                  invalid: errors.username || errors.usernamenotfound
                 })}
             />
 
             <input
                 onChange={this.onChange}
-                password="logpassword"
+                id="password"
                 type="password"
                 placeholder="Password"
-                value={this.state.logpassword}
+                value={this.state.password}
                 required
                 className={classnames("", {
-                  invalid: errors.logpassword || errors.logpasswordincorrect
+                  invalid: errors.password || errors.passwordincorrect
                 })}
             />
 
             <button
             className="btn searchBtn"
-            typw="submit"
+            type="submit"
             onClick={this.onChange}>
             Submit
             </button>

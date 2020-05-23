@@ -6,7 +6,7 @@ function Navbar() {
     return(
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <Link className="navbar-brand" to="/">
-            G2 DRIVERS ACADEMY WHITBY   
+            Test Company   
             </Link>
 
             <div>

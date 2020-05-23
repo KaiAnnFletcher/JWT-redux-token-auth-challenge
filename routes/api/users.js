@@ -63,7 +63,7 @@ router.post("/login", (req, res) => {
 if (!isValid) {
     return res.status(400).json(errors);
 }
-const firsname = req.body.firstname;
+const firstname = req.body.firstname;
 const lastname = req.body.lastname;
 const username = req.body.username;
 const password = req.body.password;

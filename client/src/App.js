@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 
@@ -12,6 +12,8 @@ import Footer from "./components/Footer";
 //import Home from "./pages/Home";
 import Log from "./pages/Login";
 import Sign from "./pages/Signup";
+import Logout from "./pages/Logout"
+import PrivateRoute from "./components/private-route/PrivateRoute";
 import Wrapper from "./components/Wrapper";
 //import Logout from "./pages/Logout";
 //import logo from './logo.svg';
@@ -21,7 +23,7 @@ import Wrapper from "./components/Wrapper";
 if(localStorage.jwtToken) {
   //Set auth token header auth
   const token = localStorage.jwtToken;
-  setAuthToken(token);
+  setAuthToken();
   // Decode token and get user info and exp
   const decoded = jwt_decode(token)
   // Set user and isAuthenticated
@@ -47,9 +49,12 @@ class App extends Component {
      <Navbar />
      <Footer />
     {/* <Route exact path="/" component={Home} /> */}
+    <Route exact path="/signup" component={Sign} />
     <Route exact path="/login" component={Log} />
     {/* <Route exact path="/logout" component={Logout} /> */}
-    <Route exact path="/signup" component={Sign} />
+    <Switch>
+        <PrivateRoute exact path="/logout" component={Logout} />
+    </Switch>
     </Wrapper>
     
     </div>
