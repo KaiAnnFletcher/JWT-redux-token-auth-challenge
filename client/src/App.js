@@ -10,9 +10,9 @@ import store from "./store";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 //import Home from "./pages/Home";
-import Log from "./pages/Login";
-import Sign from "./pages/Signup";
-import Logout from "./pages/Logout"
+import Log from "./components/auth/Login";
+import Sign from "./components/auth/Signup";
+import Logout from "./components/auth/Logout"
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Wrapper from "./components/Wrapper";
 //import Logout from "./pages/Logout";

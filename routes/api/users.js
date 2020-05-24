@@ -25,14 +25,14 @@ router.post("/register", (req, res) => {
         return res.status(400).json(errors);
     }
 
-    User.findOne({ username: req.body.username }).then(user => {
+    User.findOne({ email: req.body }).then(user => {
         if (user) {
-            return res.status(400).json({ username: "Username already exists" });
+            return res.status(400).json({ email: "Email already exists" });
         } else {
             const newUser = new User({
                 firstname: req.body.firstname,
                 lastname: req.body.lastname,
-                username: req.body.username,
+                email: req.body.email,
                 password: req.body.password
             });
     //Hash password before saving to database
@@ -65,14 +65,14 @@ if (!isValid) {
 }
 const firstname = req.body.firstname;
 const lastname = req.body.lastname;
-const username = req.body.username;
+const email = req.body.email;
 const password = req.body.password;
 
 //Find user by username
-User.findOne({ username }).then(user => {
+User.findOne({ email }).then(user => {
     //Check if user exists
     if(!user) {
-        return res.status(404).json({ usernamenotfound: "Username not found" });
+        return res.status(404).json({ emailnotfound: "Email not found" });
     }
 //Check Password
 bcrypt.compare(password, user.password).then(isMatch => {

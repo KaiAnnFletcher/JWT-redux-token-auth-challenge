@@ -1,38 +1,51 @@
+.navbar{
+  background: red;
+  color: black
+}
+
+.navbar-brand{
+  color: black
+}
+
+.nav-link{
+  color: black
+}
+
 .navbar-nav.navbar-center {
     line-height: 0px;
     position: absolute;
     left: 50%;
     transform: translatex(-50%);
     /* margin-bottom: 0;  */
-    color: mintcream;
+    color: black;
 }
 
 .nav-item1{
     margin-left: 50;
-    color: mintcream;
+    color: black;
   }
   
   .nav-item2 {
     margin-left: 100;
-    color: mintcream;
+    color: black;
   }
   
   .nav-item3 {
     margin-left: 150;
-    color: mintcream;
+    color: black;
   }
 
   .nav-item4 {
     margin-left: 200;
-    color: mintcream;
+    color: black;
   }
 
   .nav-item5 {
     margin-left: 250;
-    color: mintcream;
+    color: black;
   }
 
   .nav-item6 {
     margin-left: 250;
-    color: mintcream;
+    color: black;
   }

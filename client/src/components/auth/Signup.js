@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Col, Row, Container } from "../components/Grid";
+import { Col, Row, Container } from "../Grid";
 //import Signup from "../components/Signup";
 import "./Signup.css";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { registerUser } from "../actions/authAction";
+import { registerUser } from "../../actions/authAction";
 import classnames from "classnames";
 //import API from "../utils/API";
 
@@ -15,7 +15,7 @@ class Sign extends Component {
     this.state = {
         firstname:"",
         lastname:"",
-        username:"",
+        email:"",
         password:"",
         errors: {}
     };
@@ -25,7 +25,7 @@ class Sign extends Component {
 componentDidMount() {
   //If logged in and user navigates to Register, should redirect them to dashboard/homepage
   if(this.props.auth.isAuthenticated) {
-    this.props.history.push("/home");
+    this.props.history.push("/logout");
   }
 }
 
@@ -47,7 +47,7 @@ onSubmit = e => {
 const newUser = {
   firstname: this.state.firstname,
   lastname: this.state.lastname,
-  username: this.state.username,
+  email: this.state.email,
   password: this.state.password
 };
 this.props.registerUser(newUser, this.props.history);
@@ -97,14 +97,14 @@ render() {
 
                 <input
                 onChange={this.onChange}
-                id="username"
+                id="email"
                 type="text"
-                placeholder="choose a username"
-                value={this.state.username}
+                placeholder="enter email"
+                value={this.state.email}
                 error={errors.username}
                 required
                 className={classnames("", {
-                  invalid: errors.username
+                  invalid: errors.email
                 })}
                 />
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Col, Row, Container } from "../components/Grid";
+import { Col, Row, Container } from "../Grid";
 //import Login from "../components/Login";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { loginUser } from "../actions/authAction";
+import { loginUser } from "../../actions/authAction";
 import classnames from "classnames";
 import "./Login.css"
 //import API from "../utils/API";
@@ -14,22 +14,22 @@ class Log extends Component {
 this.state = {
     firstname:"",
     lastname:"",
-    username:"",
+    email:"",
     password: "",
     errors: {}
 };
 }
 //Place logic here
 componentDidMount() {
-  //If logged in and user navigates to LOgin page, should redirect them to dashboard/home page
+  //If logged in and user navigates to Login page, should redirect them to dashboard/home page
   if(this.props.auth.isAuthenticated) {
-    this.props.history.push("/home");
+    this.props.history.push("/logout");
   }
 }
 
-componenentWillReceiveProps(nextProps) {
+componentWillReceiveProps(nextProps) {
   if(nextProps.auth.isAuthenticated) {
-    this.props.history.push("/home");
+    this.props.history.push("/logout");
   }
   if (nextProps.errors) {
     this.setState({
@@ -48,7 +48,7 @@ onSubmit = e => {
   const userData = {
     firstname: this.state.firstname,
     lastname: this.state.lastname,
-    username: this.state.username,
+    email: this.state.email,
     password: this.state.password
   };
 
@@ -67,7 +67,7 @@ render() {
     <div className="login-container styleLoginSubWrap">
 
     
-    <form className="login styleLogin" action="/login" noValidate onSubmit={this.onSubmit}>
+    <form className="login styleLogin" noValidate onSubmit={this.onSubmit}>
 
         <div className="form-group">
             <label htmlFor="title"><h4>LOGIN</h4></label>
@@ -97,13 +97,13 @@ render() {
 
             <input
                 onChange={this.onChange}
-                id="username"
-                type="text"
-                placeholder="Username"
-                value={this.state.username}
+                id="email"
+                type="email"
+                placeholder="Email"
+                value={this.state.email}
                 required
                 className={classnames("", {
-                  invalid: errors.username || errors.usernamenotfound
+                  invalid: errors.email || errors.emailnotfound
                 })}
             />
 
@@ -122,8 +122,8 @@ render() {
             <button
             className="btn searchBtn"
             type="submit"
-            onClick={this.onChange}>
-            Submit
+            >
+            Login
             </button>
         </div>
     </form>

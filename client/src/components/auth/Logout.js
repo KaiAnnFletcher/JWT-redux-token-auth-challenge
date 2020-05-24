@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Col, Row, Container } from "../components/Grid";
+import { Col, Row, Container } from "../Grid";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { logoutUser } from "../actions/authAction";
+import { logoutUser } from "../../actions/authAction";
 import "./Logout.css"
 
 class Logout extends Component {
@@ -13,6 +13,7 @@ class Logout extends Component {
 
     render() {
         const { user } = this.props.auth;
+        console.log(user)
     
 
     return ( 
@@ -24,10 +25,10 @@ class Logout extends Component {
         <div className="login-container styleLoginSubWrap">
         <div className="landing-copy col s12 center-align">
         <h4>
-            <b>Hey there,</b> {user.username.split(" ")[0]}
+            <b>Hey there,</b> {user.firstname}
             <p className="flow-text grey-text text-darken-1">
-            You are logged into{" "}    
-            <span className="span-stylee">KAIBRU!</span> Welcome!
+            You are logged into the{" "}    
+            <span className="span-style">G2 DRIVERS ACADEMY WHITBY website!</span> Welcome!
             </p>
         </h4>
         <button

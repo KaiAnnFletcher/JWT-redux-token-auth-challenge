@@ -4,9 +4,9 @@ import "./style.css";
 
 function Navbar() {
     return(
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg">
             <Link className="navbar-brand" to="/">
-            Test Company   
+            G2 DRIVERS ACADEMY WHITBY  
             </Link>
 
             <div>
